@@ -17,16 +17,38 @@ contacts = [{
     "email": "marydoe@email.com"
     }]
 
+# Functions
 def allnames():
     for contact in contacts:
-        print(f"\n - {contact}")
+        print(contact["name"])
+    # Using index:
+    # for i in range(len(contacts)):
+    #     print(contacts[i]["name"])
 
-def search(): # use a dictionary
+def search(): 
     searchcontact = input("Please enter a contact you want to search up: ")
-    if searchcontact in contacts:
-        print(contacts.index(searchcontact))
-    else:
-        print("no contact found")
+    found = True
+    for contact in contacts:
+        if contact["name"] == searchcontact:
+            print("\n",contact["name"]) 
+            print(contact["number"]) 
+            print(contact["email"])
+        else:
+            print("Name not found in contacts.")
+            break
+
+def edit():
+    print("edit")
+
+def new():
+    print("new")
+
+def remove():
+    print("remove")
+
+def exit():
+    loop = False
+    print("\nBye!")
 
 # Main Menu
 loop = True 
@@ -43,6 +65,16 @@ while loop:
 
     if selection == "1" or selection == "display contact names":
         allnames()
-    if selection == "2" or selection == "search for contact":
+    elif selection == "2" or selection == "search for contact":
         search()
+    elif selection == "3" or selection == "edit contact":
+        edit()
+    elif selection == "4" or selection == "new contact":
+        new()
+    elif selection == "5" or selection == "remove contact":
+        remove()
+    elif selection == "6" or selection == "exit":
+        exit()
+    else: 
+        print("Please choose an option. ")
 
