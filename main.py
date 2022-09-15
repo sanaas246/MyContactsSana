@@ -30,18 +30,36 @@ def search():
     found = True
     for contact in contacts:
         if contact["name"] == searchcontact:
-            print("\n",contact["name"]) 
+            print(contact["name"]) 
             print(contact["number"]) 
             print(contact["email"])
+            break
         else:
-            print("Name not found in contacts.")
+            print("Contact not found")
             break
 
 def edit():
-    print("edit")
+    updatecontact = input("Please enter a contact you want to update: ")
+    for contact in contacts:
+        if contact["name"] == updatecontact:
+            contact["name"] = input("What is the new name of this contact?")
+            contact["email"] = input("What is the new email for this contact?")
+            contact["number"] = input("What is the new number for this contact?")
+            break
+        else:
+            print("Contact not found.")
+            break
 
 def new():
-    print("new")
+    newname = input("What is the new name of this contact?")
+    newemail = input("What is the new email for this contact?")
+    newnumber = input("What is the new number for this contact?")
+    newcontact = {
+        "name": newname,
+        "email": newemail,
+        "number": newnumber
+    }
+    print(newcontact)
 
 def remove():
     print("remove")
