@@ -30,39 +30,58 @@ def search():
     found = True
     for contact in contacts:
         if contact["name"] == searchcontact:
-            print(contact["name"]) 
-            print(contact["number"]) 
-            print(contact["email"])
+            found = True
             break
         else:
-            print("Contact not found")
-            break
+            found = False
+    if found == True:
+        print(contact["name"]) 
+        print(contact["number"]) 
+        print(contact["email"])
+    else:
+        print("Contact not found")
+        
+            
 
 def edit():
     updatecontact = input("Please enter a contact you want to update: ")
     for contact in contacts:
         if contact["name"] == updatecontact:
-            contact["name"] = input("What is the new name of this contact?")
-            contact["email"] = input("What is the new email for this contact?")
-            contact["number"] = input("What is the new number for this contact?")
+            found = True
             break
         else:
-            print("Contact not found.")
-            break
+            found = False
+    if found == True:
+        contact["name"] = input("What is the new name of this contact?")
+        contact["email"] = input("What is the new email for this contact?")
+        contact["number"] = input("What is the new number for this contact?")
+    else:
+        print("Contact not found")
 
 def new():
     newname = input("What is the new name of this contact?")
     newemail = input("What is the new email for this contact?")
     newnumber = input("What is the new number for this contact?")
+    print("Contact Added")
     newcontact = {
         "name": newname,
         "email": newemail,
         "number": newnumber
     }
-    print(newcontact)
+    contacts.append(newcontact)
 
 def remove():
-    print("remove")
+    removename = input("What is the name of the contact you would like to delete?")
+    for i in range (len(contacts)):
+        if contacts[i]["name"] == removename:
+            found = True
+            break
+        else:
+            found = False
+    if found == True:
+        del contacts[i]
+    else:
+        print("Contact not found")
 
 def exit():
     loop = False
