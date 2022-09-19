@@ -21,9 +21,6 @@ contacts = [{
 def allnames():
     for contact in contacts:
         print(contact["name"])
-    # Using index:
-    # for i in range(len(contacts)):
-    #     print(contacts[i]["name"])
 
 def search(): 
     searchcontact = input("Please enter a contact you want to search up: ")
