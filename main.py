@@ -36,9 +36,7 @@ def search():
         print(contact["number"]) 
         print(contact["email"])
     else:
-        print("Contact not found")
-        
-            
+        print("Contact not found")   
 
 def edit():
     updatecontact = input("Please enter a contact you want to update: ")
