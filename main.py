@@ -18,45 +18,40 @@ contacts = [{
     }]
 
 # Functions
+def searchArray(name):
+    for i in range (len(contacts)):
+        if contacts[i]["name"] == name:
+            return i
+    return -1
+
 def allnames():
     for contact in contacts:
         print(contact["name"])
 
 def search(): 
     searchcontact = input("Please enter a contact you want to search up: ")
-    found = True
-    for contact in contacts:
-        if contact["name"] == searchcontact:
-            found = True
-            break
-        else:
-            found = False
-    if found == True:
-        print(contact["name"]) 
-        print(contact["number"]) 
-        print(contact["email"])
+    index = searchArray(searchcontact)
+    if index != -1:
+        print(contacts[index]["name"]) 
+        print(contacts[index]["number"]) 
+        print(contacts[index]["email"])
     else:
         print("Contact not found")   
 
 def edit():
     updatecontact = input("Please enter a contact you want to update: ")
-    for contact in contacts:
-        if contact["name"] == updatecontact:
-            found = True
-            break
-        else:
-            found = False
-    if found == True:
-        contact["name"] = input("What is the new name of this contact?")
-        contact["email"] = input("What is the new email for this contact?")
-        contact["number"] = input("What is the new number for this contact?")
+    index = searchArray(updatecontact)
+    if index != -1:
+        contacts[index]["name"] = input("What is the new name of this contact? ")
+        contacts[index]["number"] = input("What is the new email for this contact? ")
+        contacts[index]["email"] = input("What is the new number for this contact? ")
     else:
         print("Contact not found")
 
 def new():
-    newname = input("What is the new name of this contact?")
-    newemail = input("What is the new email for this contact?")
-    newnumber = input("What is the new number for this contact?")
+    newname = input("What is the new name of this contact? ")
+    newemail = input("What is the new email for this contact? ")
+    newnumber = input("What is the new number for this contact? ")
     print("Contact Added")
     newcontact = {
         "name": newname,
@@ -66,15 +61,10 @@ def new():
     contacts.append(newcontact)
 
 def remove():
-    removename = input("What is the name of the contact you would like to delete?")
-    for i in range (len(contacts)):
-        if contacts[i]["name"] == removename:
-            found = True
-            break
-        else:
-            found = False
-    if found == True:
-        del contacts[i]
+    removename = input("What is the name of the contact you would like to delete? ")
+    index = searchArray(removename)
+    if index != -1:
+        del contacts[index]
     else:
         print("Contact not found")
 
